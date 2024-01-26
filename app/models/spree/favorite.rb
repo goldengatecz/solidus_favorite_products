@@ -5,7 +5,7 @@ module Spree
       belongs_to :user
     end
 
-    validates :product_id, uniqueness: { scope: :user_id, message: Spree.t(:duplicate_favorite), allow_blank: true }
+    validates :product_id, uniqueness: { scope: :user_id, message: I18n.t('spree.duplicate_favorite'), allow_blank: true }
 
     scope :with_product_id, ->(id) { joins(:product).readonly(false).merge(Spree::Product.where(id: id)) }
   end

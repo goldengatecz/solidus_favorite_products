@@ -1,19 +1,19 @@
 <% admin_breadcrumb(link_to plural_resource_name(Spree::LegacyUser), spree.admin_users_path) %>
 <% admin_breadcrumb(link_to @user.email, edit_admin_user_url(@user)) %>
-<% admin_breadcrumb(Spree.t(:favorite_products, scope: [:admin, :tab])) %>
+<% admin_breadcrumb(t(:favorite_products, scope: [:spree, :admin, :tab])) %>
 
 <%= render 'spree/admin/users/sidebar' %>
 <%= render 'spree/admin/users/tabs', current: :favorite_products %>
 <%= render partial: 'spree/admin/users/user_page_actions' %>
 
 <div data-hook="account_my_favorite_products" class="account-my-favorite-products commonform">
-  <h3><%= Spree.t(:favorite_products, scope: [:admin, :tab]) %></h3>
+  <h3><%= t(:favorite_products, scope: [:spree, :admin, :tab]) %></h3>
   <% if @favorite_products.present? %>
     <table class="favorite-products order-summary" width="100%">
       <thead>
       <tr>
-        <th class="favorite-product-image"><%= Spree.t(:product_image) %></th>
-        <th class="favorite-product-name"><%= Spree.t(:product_name) %></th>
+        <th class="favorite-product-image"><%= t('spree.product_image') %></th>
+        <th class="favorite-product-name"><%= t('spree.product_name') %></th>
         <th class="favorite-product-action actions"></th>
       </tr>
       </thead>
@@ -31,7 +31,7 @@
       </tbody>
     </table>
   <% else %>
-    <p><%= Spree.t(:you_have_no_favorite_products_yet) %></p>
+    <p><%= t('spree.you_have_no_favorite_products_yet') %></p>
   <% end %>
 
   <%= paginate @favorite_products %>

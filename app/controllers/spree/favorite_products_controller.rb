@@ -12,7 +12,7 @@ module Spree
     def create
       favorite = spree_current_user.favorites.new(product_id: params[:id])
       if @success = favorite.save
-        @message = I18n.t(:success, scope: [:favorite_products, :create])
+        @message = I18n.t(:success, scope: [:spree, :favorite_products, :create])
       else
         @message = favorite.errors.full_messages.to_sentence
       end
@@ -35,7 +35,7 @@ module Spree
       def store_favorite_product_preference
         unless spree_current_user
           session[:spree_user_return_to] = product_path(id: params[:id], favorite_product_id: params[:id])
-          redirect_to login_path, notice: I18n.t(:login_to_add_favorite)
+          redirect_to login_path, notice: I18n.t('spree.login_to_add_favorite')
         end
       end
   end
